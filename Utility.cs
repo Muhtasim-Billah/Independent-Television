@@ -14,15 +14,15 @@ namespace Count_Down
         {
             string providerName = "System.Data.SqlClient";
 
-            string serverName = "DELL-PC\\MUHTASIMSQL";
-            string databaseName = "genTiming";
+            string serverName = "ServerName";
+            string databaseName = "DBNAME";
             SqlConnectionStringBuilder sqlb = new SqlConnectionStringBuilder();
             sqlb.DataSource = serverName;
             sqlb.InitialCatalog = databaseName;
 
-            sqlb.UserID = "sa";
+            sqlb.UserID = "adcaad";
 
-            sqlb.Password = "abc";
+            sqlb.Password = "adasdad";
             sqlb.IntegratedSecurity = false;
             string provs = sqlb.ToString();
 
