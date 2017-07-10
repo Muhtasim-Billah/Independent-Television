@@ -13,7 +13,7 @@ namespace Count_Down
 {
     public partial class Form1 : Form
     {
-        private PWSACTIVEXLib.vizCommunication vc;
+        private vizCommunication vc; //Here I used library which is removed from here
         private string scene1;
         private string sceneOld;
         private TimeSpan ts;
@@ -28,11 +28,11 @@ namespace Count_Down
         {
             InitializeComponent();
             this.db = new Entities( Utility.getConnection());
-            vc = new PWSACTIVEXLib.vizCommunication();
+            vc = new vizCommunication(); //I customized it using library which is removed from here
             //sceneOld was used before and is kept just to maintain backward compatibility. It is not used normally.
-            this.sceneOld = "SCENE*INDEPENDENT-TV_NEW/ALL_CARD/COUNT_DOWN_BANGLA_Xpel";
+            this.sceneOld = "Scene Name";
             //scene1 is the actual scene that is loaded. Edit this scene name if necessary.
-            this.scene1 = "SCENE*INDEPENDENT-TV_NEW/ALL_CARD/COUNT_DOWN_BANGLA_4_5_New";
+            this.scene1 = "Scene Name";
             Clock = new Timer();
             Clock.Interval = 1000;
             Clock.Tick += new EventHandler(Timer_Tick);
@@ -65,7 +65,7 @@ namespace Count_Down
                       Clock.Stop();
 
                       this.sendVizCommand("0 RENDERER*STAGE*DIRECTOR*Xpel START");
-                      this.sendVizCommand("0 RENDERER*STAGE*DIRECTOR*Xpel CONTINUE");
+                      //More Command to write
 
 
                   //    this.btnStop.Enabled = !this.btnStop.Enabled;//disables
@@ -86,8 +86,7 @@ namespace Count_Down
             this.enableOrDisable4_5Buttons(false);
             
             vc.singleCommandSendNoBufferUseDefaults("0 RENDERER SET_OBJECT " + this.getCurrentScene() + " LOAD");
-            vc.singleCommandSendNoBufferUseDefaults("0 RENDERER SET_OBJECT " + this.getCurrentScene());
-            vc.singleCommandSendNoBufferUseDefaults("-1 RENDERER*STAGE START");
+            //More Command to write
             vc.singleCommandSendNoBufferUseDefaults("0 RENDERER*TREE*@txt2*GEOM*TEXT SET 1");
             stopTime = DateTime.Now.AddMinutes(4.0);
             Clock.Start();
@@ -111,8 +110,7 @@ namespace Count_Down
             vc.hostname = cmbBxEngineSelect.Text;
             this.enableOrDisable4_5Buttons(false);
             this.sendVizCommand("0 RENDERER SET_OBJECT " + this.getCurrentScene() + " LOAD");
-            this.sendVizCommand("0 RENDERER SET_OBJECT " + this.getCurrentScene());
-            this.sendVizCommand("-1 RENDERER*STAGE START");
+            //More Command to write
             this.sendVizCommand("0 RENDERER*TREE*@txt2*GEOM*TEXT SET 5");
             stopTime = DateTime.Now.AddMinutes(5.0);
             Clock.Start();
@@ -139,8 +137,7 @@ namespace Count_Down
             }
             vc.hostname = cmbBxEngineSelect.Text;
             this.sendVizCommand("0 RENDERER*FRONT_LAYER SET_OBJECT");
-            this.sendVizCommand("0 RENDERER*MAIN_LAYER SET_OBJECT");
-            this.sendVizCommand("0 RENDERER*BACK_LAYER SET_OBJECT");
+            //More Command to write
             this.sendVizCommand("0 SCENE CLEANUP");
             this.sendVizCommand("0 GEOM CLEANUP");
             this.sendVizCommand("0 IMAGE CLEANUP");
