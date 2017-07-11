@@ -1,4 +1,6 @@
-﻿using System;
+//Author: Muhtasim Billah
+//There are some changes for this version 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -87,7 +89,7 @@ namespace Count_Down
             
             vc.singleCommandSendNoBufferUseDefaults("0 RENDERER SET_OBJECT " + this.getCurrentScene() + " LOAD");
             //More Command to write
-            vc.singleCommandSendNoBufferUseDefaults("0 RENDERER*TREE*@txt2*GEOM*TEXT SET 1");
+            vc.singleCommandSendNoBufferUseDefaults("0 RENDERER*TREE*GEOM*TEXT SET 1");
             stopTime = DateTime.Now.AddMinutes(4.0);
             Clock.Start();
             this.enableOrDisable4_5Buttons(true);
@@ -111,7 +113,7 @@ namespace Count_Down
             this.enableOrDisable4_5Buttons(false);
             this.sendVizCommand("0 RENDERER SET_OBJECT " + this.getCurrentScene() + " LOAD");
             //More Command to write
-            this.sendVizCommand("0 RENDERER*TREE*@txt2*GEOM*TEXT SET 5");
+            this.sendVizCommand("0 RENDERER*TREE*GEOM*TEXT SET 5");
             stopTime = DateTime.Now.AddMinutes(5.0);
             Clock.Start();
             this.enableOrDisable4_5Buttons(true);
@@ -136,14 +138,10 @@ namespace Count_Down
                 return;
             }
             vc.hostname = cmbBxEngineSelect.Text;
-            this.sendVizCommand("0 RENDERER*FRONT_LAYER SET_OBJECT");
+            this.sendVizCommand("0 RENDERER*LAYER SET_OBJECT");
             //More Command to write
-            this.sendVizCommand("0 SCENE CLEANUP");
-            this.sendVizCommand("0 GEOM CLEANUP");
-            this.sendVizCommand("0 IMAGE CLEANUP");
-            this.sendVizCommand("0 FONT CLEANUP");
             this.sendVizCommand("0 MATERIAL CLEANUP");
-            this.sendVizCommand("0 MAPS CACHE CLEANUP");
+            this.sendVizCommand("0 CACHE CLEANUP");
 
             Clock.Stop();
             lblTimer.Text = "--:--:--";
@@ -160,7 +158,7 @@ namespace Count_Down
                 return;
             }
             vc.hostname = cmbBxEngineSelect.Text; 
-            vc.singleCommandSendNoBufferUseDefaults("0 RENDERER*TREE*@txt2*GEOM*TEXT SET 3");
+            vc.singleCommandSendNoBufferUseDefaults("0 RENDERER*TREE*GEOM*TEXT SET 3");
             Clock.Stop();
             //this.btnStart4Min.Enabled = !this.btnStart4Min.Enabled;
             //this.btnStop.Enabled = !this.btnStop.Enabled;
